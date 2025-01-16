@@ -19,12 +19,44 @@ class ChatContainer extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ImageContainer(
-            borderRadius: 25,
-            imageUrl: chatMessage.profileImage,
-            width: 50,
-            height: 50,
-          )
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: ImageContainer(
+              borderRadius: 25,
+              imageUrl: chatMessage.profileImage,
+              width: 50,
+              height: 50,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        chatMessage.sender,
+                        style: TextStyle(fontSize: 17, color: Colors.black),
+                      ),
+                      Text(
+                        '${chatMessage.location} · ${chatMessage.sendDate}',
+                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${chatMessage.message}',
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
